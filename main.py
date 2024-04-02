@@ -8,12 +8,19 @@ class User:
         self._name = name
         self._age = age
         self._max_age = max_age
+        
     @property
     def name(self):
         return self._name
+        
     @property
     def age(self):
         return self._age
+        
+    @age.getter
+    def age(self):
+        return self._age
+        
     @age.setter
     def age(self, value):
         if value <= self._max_age:
