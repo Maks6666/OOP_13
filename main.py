@@ -1,35 +1,28 @@
-class Calculator:
-    def add(self, x, y):
-        return x + y
-    def subtract(self, x, y):
-        return x - y
-    def multiply(self, x, y):
-        return x * y
-    def divide(self, x, y):
-        if y != 0:
-            return x / y
+# Створіть клас для представлення користувача з
+# атрибутами: ім'я та вік. Додайте властивості для
+# валідації віку користувача. Наприклад, вік повинен
+# бути у межах від 0 до 120.
+
+class User:
+    def __init__(self, name, age, max_age):
+        self._name = name
+        self._age = age
+        self._max_age = max_age
+    @property
+    def name(self):
+        return self._name
+    @property
+    def age(self):
+        return self._age
+    @age.setter
+    def age(self, value):
+        if value <= self._max_age:
+            self._age = value
         else:
-            raise ZeroDivisionError("Zero division error")
-    def __call__(self, action, x, y):
-        if action == "add":
-            return self.add(x, y)
-        elif action == "subtract":
-            return self.subtract(x, y)
-        elif action == "multiply":
-            return self.multiply(x, y)
-        elif action == "divide":
-            return self.divide(x, y)
-        else:
-            print("Wrong action.")
-
-calculator = Calculator()
-print(calculator("add", 2, 4))
+            raise ValueError("Value is too high")
 
 
 
-
-
-
-
-
-
+user = User("John", 40, 120)
+user.age = 40
+print(user.name, user.age)
